@@ -1,15 +1,21 @@
 import asyncio
-
+import os
 from aiogram import Bot, Dispatcher
-from core.config import settings
 from handlers import user_handlers
+from dotenv import load_dotenv
+
+load_dotenv()
+# Теперь переменная BOT_TOKEN, описанная в файле .env,
+# доступна в пространстве переменных окружения
+
+token = os.getenv('BOT_TOKEN')
 
 
 # Функция конфигурирования и запуска бота
 async def main():
 
     # Инициализируем бот и диспетчер
-    bot = Bot(token=settings.bot_token)
+    bot = Bot(token=token)
     dp = Dispatcher()
 
     # Регистриуем роутеры в диспетчере
