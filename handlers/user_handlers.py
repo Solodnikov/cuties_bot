@@ -1,13 +1,14 @@
 from aiogram import Router
 from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
+from aiogram.types import FSInputFile
 from lexicon.lexicon import LEXICON_RU
 from keyboards import keyboard
 from aiogram import F
 from utils import (get_cat_photo_url,
                    get_dog_photo_url,
                    get_fox_photo_url)
-
+from constants import START_FOTO
 
 # Инициализируем роутер уровня модуля
 router = Router()
@@ -16,6 +17,8 @@ router = Router()
 # Этот хэндлер срабатывает на команду /start
 @router.message(CommandStart())
 async def process_start_command(message: Message):
+    photo = FSInputFile(START_FOTO)
+    await message.answer_photo(photo)
     await message.answer(
         text=LEXICON_RU['/start'],
         reply_markup=keyboard)
