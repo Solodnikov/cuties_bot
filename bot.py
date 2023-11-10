@@ -8,7 +8,8 @@ load_dotenv()
 # Теперь переменная BOT_TOKEN, описанная в файле .env,
 # доступна в пространстве переменных окружения
 
-token = os.getenv('BOT_TOKEN')
+token = os.getenv('BOT_TOKEN',
+                  default='6659854208:AAGvQY2TZF1E1Tm-xz8X0vC348HvXYTu80w')
 
 
 # Функция конфигурирования и запуска бота
